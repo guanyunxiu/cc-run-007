@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>直播白板 · 低延迟同步</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 加入房间弹层 -->
+  <div id="joinScreen" class="join-screen">
+    <form id="joinForm" class="join-card" autocomplete="off">
+      <h1>直播白板</h1>
+      <p class="subtitle">低延迟笔迹同步 · 贝塞尔平滑 · 断线自动补齐</p>
+      <label>
+        房间号
+        <input id="roomInput" type="text" maxlength="32" placeholder="例如 live-101" required />
+      </label>
+      <label>
+        昵称（可选）
+        <input id="nameInput" type="text" maxlength="20" placeholder="匿名用户" />
+      </label>
+      <button type="submit">加入房间</button>
+      <p class="hint">同一房间号的用户将实时看到彼此的笔迹</p>
+    </form>
+  </div>
+
+  <!-- 白板主界面 -->
+  <div id="app" class="app hidden">
+    <header class="toolbar">
+      <div class="group">
+        <span class="room-label">房间：<b id="roomLabel"></b></span>
+        <span class="user-label" id="userLabel"></span>
+      </div>
+
+      <div class="group colors" id="colors">
+        <button type="button" class="swatch active" data-color="#1f2937" style="background:#1f2937" title="黑色"></button>
+        <button type="button" class="swatch" data-color="#ef4444" style="background:#ef4444" title="红色"></button>
+        <button type="button" class="swatch" data-color="#2563eb" style="background:#2563eb" title="蓝色"></button>
+        <button type="button" class="swatch" data-color="#16a34a" style="background:#16a34a" title="绿色"></button>
+      </div>
+
+      <div class="group">
+        <label class="width-label">
+          线宽
+          <input id="widthInput" type="range" min="2" max="16" step="1" value="4" />
+          <span id="widthValue">4</span>
+        </label>
+      </div>
+
+      <div class="group status-group">
+        <span id="statusDot" class="status-dot offline"></span>
+        <span id="statusText" class="status-text">离线</span>
+        <span id="seqText" class="seq-text">seq 0</span>
+      </div>
+    </header>
+
+    <main id="boardWrap" class="board-wrap">
+      <!-- 主 Canvas：只绘制当前正在书写的笔迹（顶层） -->
+      <canvas id="mainCanvas"></canvas>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

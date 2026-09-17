@@ -1,0 +1,16 @@
+{
+  "name": "whiteboard-sync",
+  "version": "1.0.0",
+  "description": "直播白板低延迟同步：原生 Canvas + Node.js ws，贝塞尔平滑 / 双缓冲 / 本地预提交 / OpLog / 指数退避重连",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
