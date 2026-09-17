@@ -1,0 +1,16 @@
+{
+  "name": "live-whiteboard",
+  "version": "1.0.0",
+  "description": "低延迟直播白板：原生 Canvas + Node.js ws，房间广播 + OpLog + 断线重连",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/run-tests.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "ws": "^8.17.0"
+  }
+}
